@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %} {% include 'static/css/css.css' %}
+<center>
+  <br />
+  <table>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Address</th>
+    <th>Job Title</th>
+    <th>edit</th>
+    {% for employee in employees %}
+    <tr>
+      <td>{{employee}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.phonenum}}</td>
+      <td>{{employee.address}}</td>
+      <td>{{employee.job}}</td>
+      <td>
+        <a
+          class="btn btn-outline-secondary btn-sm"
+          href="{%url 'update_employee' employee.id%}"
+          >Update</a
+        >
+        <a
+          class="btn btn-outline-danger btn-sm"
+          href="{%url 'finle_delete' employee.id%}"
+          >Delete</a
+        >
+      </td>
+    </tr>
+
+    {% endfor %}
+  </table>
+</center>
+{% endblock %}

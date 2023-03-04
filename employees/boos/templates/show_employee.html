@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {%block content%}
+<h1>Employees:</h1>
+<ul>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Gander</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Supervisor</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {%for employee in employees%}
+      <tr>
+        <th scope="row">{{employee}}</th>
+        <td>{{employee.email}}</td>
+        <td>{{employee.get_gander_display}}</td>
+        <td>{{employee.phonenum}}</td>
+        <td>{{employee.manager}}</td>
+        <td>
+          <a
+            class="btn btn-outline-secondary btn-sm"
+            href="{%url 'update_employee' employee.id%}"
+            >Update</a
+          >
+          <a
+            class="btn btn-outline-danger btn-sm"
+            href="{%url 'delete_employee' employee.id%}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</ul>
+{%endblock%}
